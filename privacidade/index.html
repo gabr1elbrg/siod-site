@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidade — SIOD</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+  main { max-width: 800px; }
+  .doc { background: rgba(255,255,255,.04); padding: 2rem; border-radius: 14px; margin-top: 2rem; }
+  .doc h2 { font-size: 1.3rem; color: var(--teal); margin-top: 2rem; }
+  .doc h2:first-child { margin-top: 0; }
+  .doc p, .doc li { font-size: 1rem; margin-bottom: .8rem; }
+  .doc ul { padding-left: 1.5rem; }
+  .volta { display: inline-block; margin-bottom: 2rem; color: var(--teal); text-decoration: none; }
+</style>
+</head>
+<body>
+<main>
+  <a href="../" class="volta">← Voltar para o início</a>
+  <h1>Política de Privacidade</h1>
+  <p class="lead" style="color:#aebccb; margin-bottom:2rem">Vigência: 31 de outubro de 2026</p>
+
+  <div class="doc">
+    <h2>1. Sobre o SIOD</h2>
+    <p>O SIOD — Sistema Integrado Organizacional é um software de gestão local desenvolvido por Gabriel Braga. Esta política descreve como tratamos as informações no âmbito do SIOD e da extensão SIOD Filler.</p>
+
+    <h2>2. Dados que NÃO coletamos</h2>
+    <ul>
+      <li>Não coletamos, transmitimos, armazenamos ou compartilhamos quaisquer dados pessoais em servidores próprios ou de terceiros</li>
+      <li>O SIOD não possui backend, banco de dados remoto, cookies, analytics ou rastreadores</li>
+      <li>Não capturamos nem armazenamos credenciais do gov.br, senhas, captchas ou códigos de verificação</li>
+    </ul>
+
+    <h2>3. Dados processados localmente</h2>
+    <p>Todo o cadastro de clientes e documentos permanece armazenado <b>exclusivamente no computador do usuário</b>, em banco de dados local (SQLite). O usuário é o único controlador dos seus dados.</p>
+
+    <h2>4. Senhas Gov.br</h2>
+    <p>Quando o usuário opta por armazenar senhas de acesso a portais governamentais, essas são criptografadas com <b>AES-256</b> usando chave exclusiva da máquina (arquivo <code>chave.key</code>), acessível apenas pelo superusuário do sistema.</p>
+
+    <h2>5. Modo Privacidade</h2>
+    <p>O SIOD oferece um recurso que aplica desfoque visual sobre CPFs, telefones, endereços e outros dados sensíveis exibidos na tela, para proteger informações em demonstrações, gravações e treinamentos.</p>
+
+    <h2>6. Extensão SIOD Filler</h2>
+    <p>A extensão SIOD Filler (edição PESCA) lê dados do SIOD local via API no <code>localhost</code> e os insere em formulários do portal oficial PesqBrasil. Nenhum dado trafega por servidores intermediários. A extensão não possui analytics, cookies ou rastreadores.</p>
+
+    <h2>7. Integração Google Drive</h2>
+    <p>Quando o usuário autoriza a integração com o Google Drive, a autenticação é feita diretamente com o Google (OAuth 2.0). O SIOD recebe apenas tokens de acesso ao Drive do próprio usuário — nenhum dado pessoal é coletado.</p>
+
+    <h2>8. Controle de licença</h2>
+    <p>Para fins de controle comercial, o SIOD pode consultar um identificador técnico da máquina em servidor externo (planilha de licenças). Nenhum dado pessoal é enviado nessa consulta.</p>
+
+    <h2>9. Crianças</h2>
+    <p>O SIOD não é destinado a crianças e não coleta deliberadamente dados de menores.</p>
+
+    <h2>10. Alterações desta política</h2>
+    <p>Eventuais atualizações serão publicadas nesta mesma URL com nova data de vigência. O uso continuado do SIOD após alterações implica aceitação.</p>
+
+    <h2>11. Direitos do titular</h2>
+    <p>Como todos os dados permanecem no computador do usuário, o titular tem controle total sobre eles: pode exportar (JSON, Excel, PDF), modificar ou excluir a qualquer momento pelo próprio sistema.</p>
+
+    <h2>12. Contato</h2>
+    <p>Dúvidas, solicitações ou reclamações sobre esta política podem ser encaminhadas a:<br>
+    📧 bragag730@gmail.com • 📱 (98) 98488-2170</p>
+  </div>
+</main>
+</body>
+</html>
