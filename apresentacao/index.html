@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>SIOD — Apresentação para Parceiros</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI',Arial,sans-serif; background:#0d1b26; color:#e6ebf2; overflow:hidden; }
+  .slide { display:none; width:100vw; height:100vh; padding:7vh 8vw; flex-direction:column; justify-content:center; position:relative; }
+  .slide.ativa { display:flex; animation:fade .7s ease; }
+  @keyframes fade { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+  .kicker { color:#17a2b8; font-weight:800; letter-spacing:.25em; font-size:.95rem; text-transform:uppercase; margin-bottom:1.4vh; }
+  h1 { font-size:4.2vw; font-weight:800; line-height:1.1; }
+  h2 { font-size:2.5vw; font-weight:800; margin-bottom:3vh; color:#fff; }
+  h2 span { color:#17a2b8; }
+  p.tx { font-size:1.35vw; line-height:1.75; color:#cfe3ee; max-width:78vw; margin-bottom:2vh; }
+  p.tx b { color:#fff; }
+  ul { font-size:1.3vw; line-height:2; list-style:none; }
+  ul li::before { content:"▸ "; color:#17a2b8; font-weight:800; }
+  .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5vw; margin-top:1vh; }
+  .card { background:rgba(255,255,255,.06); border:1px solid rgba(23,162,184,.35); border-radius:14px; padding:2vh 1.2vw; }
+  .card .ico { font-size:1.9vw; }
+  .card b { display:block; margin:.7vh 0 .4vh; font-size:1.1vw; color:#fff; }
+  .card small { color:#aebccb; font-size:.92vw; line-height:1.45; display:block; }
+  .stats { display:flex; gap:3vw; margin-top:3vh; }
+  .stat b { display:block; font-size:3.2vw; color:#17a2b8; font-weight:800; }
+  .stat small { color:#aebccb; font-size:1.05vw; }
+  .fluxo { display:flex; align-items:center; gap:1.2vw; margin-top:2.5vh; font-size:1.15vw; }
+  .fluxo div { background:rgba(255,255,255,.07); border:1px solid rgba(23,162,184,.4); border-radius:12px; padding:2vh 1.2vw; text-align:center; flex:1; }
+  .fluxo .seta { flex:0; background:none; border:none; color:#17a2b8; font-size:2vw; font-weight:800; }
+  .duas { display:flex; gap:2.5vw; align-items:center; }
+  .duas > div:first-child { flex:1.15; }
+  .midia { background:rgba(255,255,255,.05); border:1px solid rgba(23,162,184,.35); border-radius:14px; overflow:hidden; display:flex; align-items:center; justify-content:center; min-height:28vh; flex:1; }
+  .midia img { width:100%; height:auto; max-height:58vh; display:block; }
+  .vwrap { display:flex; flex-direction:column; align-items:center; gap:1.6vh; flex:1; }
+  .vwrap iframe, .vwrap video { width:66vw; height:37vw; max-height:64vh; border-radius:14px; border:0; box-shadow:0 10px 40px rgba(0,0,0,.55); background:#000; }
+  .vcap { color:#aebccb; font-size:1vw; }
+  .cover, .fim { background:radial-gradient(circle at 20% 20%, #14374a 0%, #0d1b26 60%); align-items:center; text-align:center; }
+  .cover p.tx, .fim p.tx { max-width:60vw; }
+  .badge { display:inline-block; background:#17a2b8; color:#06222b; font-weight:800; border-radius:6px; padding:.6vh 1vw; font-size:1.05vw; margin:.4vw; }
+  .num { position:absolute; top:6vh; right:8vw; font-size:5vw; font-weight:800; color:rgba(23,162,184,.14); line-height:1; }
+  .foot { position:absolute; bottom:3vh; left:8vw; right:8vw; display:flex; justify-content:space-between; color:#5f7183; font-size:.9vw; }
+  #fill { position:fixed; top:0; left:0; height:4px; background:#17a2b8; width:0%; z-index:50; }
+  #hud { position:fixed; bottom:2vh; right:2vw; color:#5f7183; font-size:.95vw; z-index:50; }
+  #ctrl { position:fixed; bottom:1.6vh; left:2vw; z-index:50; display:flex; gap:.6vw; align-items:center; }
+  #ctrl button { background:rgba(255,255,255,.08); border:1px solid rgba(23,162,184,.4); color:#cfe3ee; border-radius:8px; width:2.4vw; height:2.4vw; font-size:1vw; cursor:pointer; }
+  #ctrl button:hover { background:rgba(23,162,184,.25); }
+  #ctrl small { color:#5f7183; font-size:.85vw; }
+  @media print {
+    body { overflow:visible; }
+    .slide { display:flex !important; height:100vh; page-break-after:always; }
+    #hud,#fill,#ctrl { display:none !important; }
+    iframe, video { display:none; }
+  }
+</style>
+</head>
+<body>
+<div id="fill"></div>
+
+<!-- 1 -->
+<section class="slide cover" data-dur="12">
+  <div class="kicker">Apresentação institucional • modo automático</div>
+  <h1>SIOD</h1>
+  <p class="tx" style="text-align:center">Sistema Integrado Organizacional — tecnologia nascida dentro da operação do <b>Seguro-Defeso</b> para organizar, proteger e automatizar o trabalho de colônias, sindicatos e escritórios.</p>
+  <div style="margin-top:2vh"><span class="badge">EDIÇÃO PESCA</span><span class="badge">EDIÇÃO OFFICE</span></div>
+  <p class="tx" style="font-size:1vw; text-align:center; margin-top:3vh">Esta apresentação se executa sozinha, slide a slide. Aperte F para tela cheia.</p>
+</section>
+
+<!-- 2 -->
+<section class="slide" data-dur="20">
+  <div class="num">01</div>
+  <div class="kicker">Quem está por trás</div>
+  <h2>Um sistema criado por quem <span>vive a operação</span></h2>
+  <div class="duas">
+    <div>
+      <p class="tx"><b>Gabriel Braga</b> atua profissionalmente na área do <b>Seguro-Defeso</b>, o benefício que garante o sustento de famílias de pescadores artesanais durante o período de defeso.</p>
+      <p class="tx">Não é um desenvolvedor que descobriu um mercado: é um operador que conheceu cada fila, cada prazo e cada documento que separa um pescador do seu direito — e decidiu construir a ferramenta que faltava.</p>
+    </div>
+    <div class="midia">
+      <img src="https://drive.google.com/thumbnail?id=1cZQYou9bgYNDshc09g2xvVpWOqYsP5Lc&sz=w1000" alt="Gabriel Braga">
+    </div>
+  </div>
+  <div class="foot"><span>SIOD</span><span>Apresentação para parceiros</span></div>
+</section>
+
+<!-- 3 -->
+<section class="slide" data-dur="22">
+  <div class="num">02</div>
+  <div class="kicker">O problema visto de dentro</div>
+  <h2>O que ele presenciou, <span>todo mês, por anos</span></h2>
+  <ul>
+    <li><b>Digitação repetitiva:</b> o mesmo informe de atividade pesqueira preenchido mês a mês, campo a campo, em portal do governo</li>
+    <li><b>Prazos críticos:</b> um documento atrasado ou um erro de digitação pode travar o benefício de uma família inteira</li>
+    <li><b>Equipes enxutas:</b> colônias e sindicatos com poucas pessoas para centenas de associados</li>
+    <li><b>Documentos espalhados:</b> pastas sem padrão entre computador, Drive e papel</li>
+    <li><b>Tecnologia hostil:</b> sistemas que exigem especialista, em vez de ajudar quem já trabalha demais</li>
+  </ul>
+  <div class="foot"><span>SIOD</span><span>O problema</span></div>
+</section>
+
+<!-- 4 -->
+<section class="slide" data-dur="18">
+  <div class="num">03</div>
+  <div class="kicker">A resposta</div>
+  <h2>SIOD: a ferramenta que <span>pensa como quem atua na área</span></h2>
+  <p class="tx">O SIOD não adapta o pescador ao sistema: <b>adapta o sistema à realidade da colônia</b>. Dados locais e protegidos, fluxos que imitam o trabalho real e automação nos pontos onde o tempo costuma morrer.</p>
+  <p class="tx">Duas edições atendem públicos distintos com a mesma base: <b>PESCA</b>, para colônias e sindicatos de pescadores, e <b>OFFICE</b>, para escritórios que gestionam clientes e documentos.</p>
+  <div class="foot"><span>SIOD</span><span>A resposta</span></div>
+</section>
+
+<!-- 5 -->
+<section class="slide" data-dur="55">
+  <div class="kicker">Vídeo institucional</div>
+  <h2>O SIOD em <span>movimento</span></h2>
+  <div class="vwrap">
+    <iframe src="https://drive.google.com/file/d/1wsAva97_fPUGdctP4YstdlyLGRWlQcRs/preview" allow="autoplay" allowfullscreen></iframe>
+    <div class="vcap">Reprodução automática. Clique no vídeo para controles.</div>
+  </div>
+  <div class="foot"><span>SIOD</span><span>Vídeo institucional</span></div>
+</section>
+
+<!-- 6 -->
+<section class="slide" data-dur="20">
+  <div class="num">04</div>
+  <div class="kicker">A plataforma</div>
+  <h2>Oito módulos trabalhando <span>juntos</span></h2>
+  <div class="grid">
+    <div class="card"><div class="ico">👥</div><b>Clientes</b><small>Cadastro completo com busca, filtros e ações em lote</small></div>
+    <div class="card"><div class="ico">📄</div><b>Modelos</b><small>Documentos gerados a partir de modelos prontos</small></div>
+    <div class="card"><div class="ico">📊</div><b>Importação</b><small>Planilhas Excel viram cadastros em minutos</small></div>
+    <div class="card"><div class="ico">🌐</div><b>Sites Gov</b><small>PesqBrasil, eSocial e Emprega a um clique</small></div>
+    <div class="card"><div class="ico">🎣</div><b>REAP</b><small>Informe mensal completo e preenchimento automático</small></div>
+    <div class="card"><div class="ico">📅</div><b>Agenda</b><small>Lembretes automáticos de prazos e serviços</small></div>
+    <div class="card"><div class="ico">📱</div><b>Mobile</b><small>Acesso pelo celular através de QR Code</small></div>
+    <div class="card"><div class="ico">🔐</div><b>Segurança</b><small>Criptografia, permissões e Modo Privacidade</small></div>
+  </div>
+  <div class="foot"><span>SIOD</span><span>A plataforma</span></div>
+</section>
+
+<!-- 7 -->
+<section class="slide" data-dur="18">
+  <div class="num">05</div>
+  <div class="kicker">Função por função • cadastro</div>
+  <h2>Cadastro completo em <span>minutos, não em tardes</span></h2>
+  <p class="tx">Cada associado ou cliente entra no sistema com todos os dados pessoais, profissionais e documentais organizados em seções claras — e o SIOD cuida do resto:</p>
+  <ul>
+    <li>Endereço autocompletado a partir do CEP</li>
+    <li>Pastas do cliente criadas automaticamente no computador e no Google Drive</li>
+    <li>Campos personalizados ilimitados para a realidade de cada instituição</li>
+    <li>Histórico completo de status, serviços e atendimentos</li>
+  </ul>
+  <div class="foot"><span>SIOD</span><span>Cadastro</span></div>
+</section>
+
+<!-- 8 -->
+<section class="slide" data-dur="20">
+  <div class="num">06</div>
+  <div class="kicker">Função por função • documentos</div>
+  <h2>Documentos profissionais gerados por <span>modelos</span></h2>
+  <p class="tx">Declarações, ofícios e documentos padronizados deixam de ser digitados um a um: o SIOD guarda <b>modelos prontos</b> e gera o documento de cada cliente em segundos, com os dados já preenchidos.</p>
+  <ul>
+    <li>Modelos criados e mantidos pela própria instituição</li>
+    <li>Geração em PDF com layout configurável campo a campo</li>
+    <li>Padronização total do que a colônia ou o escritório emite</li>
+    <li>Arquivamento automático na pasta do cliente (PC e Drive)</li>
+  </ul>
+  <div class="foot"><span>SIOD</span><span>Modelos de documentos</span></div>
+</section>
+
+<!-- 9 -->
+<section class="slide" data-dur="18">
+  <div class="num">07</div>
+  <div class="kicker">Função por função • importação</div>
+  <h2>A planilha que já existe vira <span>sistema organizado</span></h2>
+  <p class="tx">Nenhuma instituição começa do zero: todas já têm anos de história em planilhas. O SIOD respeita isso.</p>
+  <ul>
+    <li>Importação de cadastros em massa direto do Excel</li>
+    <li>Exportação selecionada para Excel e JSON (backup e portabilidade)</li>
+    <li>Migração assistida na implantação: o passado entra junto</li>
+  </ul>
+  <p class="tx" style="margin-top:2vh">Centenas de associados migram em minutos — sem redigitação, sem perda de histórico.</p>
+  <div class="foot"><span>SIOD</span><span>Importação de planilhas</span></div>
+</section>
+
+<!-- 10 -->
+<section class="slide" data-dur="18">
+  <div class="num">08</div>
+  <div class="kicker">Função por função • governo</div>
+  <h2>Navegação fácil entre os <span>sites do governo</span></h2>
+  <p class="tx">O trabalho real acontece em vários portais oficiais ao mesmo tempo. O SIOD transforma esse labirinto em um menu de um clique:</p>
+  <ul>
+    <li>Atalhos prontos para <b>PesqBrasil, eSocial e Emprega Brasil</b></li>
+    <li>Lista de sites gerenciável: a instituição adiciona os portais que usa</li>
+    <li>Senhas Gov.br guardadas com <b>criptografia AES</b>, visíveis só para quem tem permissão</li>
+  </ul>
+  <p class="tx" style="margin-top:2vh">Menos abas, menos senhas anotadas em papel, menos tempo perdido.</p>
+  <div class="foot"><span>SIOD</span><span>Sites Gov</span></div>
+</section>
+
+<!-- 11 -->
+<section class="slide" data-dur="16">
+  <div class="num">09</div>
+  <div class="kicker">Função por função • organização diária</div>
+  <h2>Agenda, documentos e equipe <span>sob controle</span></h2>
+  <ul>
+    <li><b>Agenda com lembretes automáticos:</b> nenhum prazo de serviço ou documento passa despercebido</li>
+    <li><b>Pastas PC + Drive sincronizadas:</b> cada cliente com sua estrutura padrão de documentos</li>
+    <li><b>Três níveis de permissão:</b> superusuário, admin e assistente — erro humano bloqueado por regra</li>
+    <li><b>Acesso mobile por QR Code:</b> a diretoria consulta tudo pelo celular</li>
+  </ul>
+  <div class="foot"><span>SIOD</span><span>Organização diária</span></div>
+</section>
+
+<!-- 12 -->
+<section class="slide" data-dur="18">
+  <div class="num">10</div>
+  <div class="kicker">Função por função • confiança</div>
+  <h2>Segurança e LGPD <span>por arquitetura</span>, não por promessa</h2>
+  <div class="duas">
+    <div>
+      <ul>
+        <li>Banco de dados 100% local: nada em servidores de terceiros</li>
+        <li>Senhas Gov.br criptografadas com chave exclusiva da máquina</li>
+        <li><b>Modo Privacidade:</b> borra CPF, contatos e endereços na tela para gravações e treinamentos</li>
+        <li>Atualizações automáticas que nunca apagam dados ou licenças</li>
+      </ul>
+    </div>
+    <div class="midia">
+      <img src="https://drive.google.com/thumbnail?id=1-1SbWvgjMow9tT8S3lJwDb8w_luXOrKz&sz=w2000" alt="Modo Privacidade">
+    </div>
+  </div>
+  <div class="foot"><span>SIOD</span><span>Segurança</span></div>
+</section>
+
+<!-- 13 -->
+<section class="slide" data-dur="22">
+  <div class="num">11</div>
+  <div class="kicker">O carro-chefe • contexto</div>
+  <h2>O que é o <span>REAP</span> — e por que ele dói</h2>
+  <p class="tx">O <b>Relatório de Exercício da Atividade Pesqueira</b> é o informe mensal obrigatório no portal PesqBrasil do Ministério da Pesca. Mês a mês, é preciso declarar: houve pesca? quantos dias trabalhados? em qual área (local, UF, município)? quais espécies, quantidades e valores?</p>
+  <p class="tx">É a <b>espinha dorsal da comprovação de atividade pesqueira</b> — a base que sustenta direitos como o próprio Seguro-Defeso. E hoje, na imensa maioria das colônias, ele é preenchido <b>manualmente, todo mês, campo por campo</b>.</p>
+  <div class="foot"><span>SIOD</span><span>O carro-chefe</span></div>
+</section>
+
+<!-- 14 -->
+<section class="slide" data-dur="20">
+  <div class="num">12</div>
+  <div class="kicker">O carro-chefe • no SIOD</div>
+  <h2>O ano inteiro de atividade pesqueira <span>em uma tela</span></h2>
+  <div class="duas">
+    <div>
+      <ul>
+        <li>Painel dos 12 meses com dias, áreas, espécies e valores</li>
+        <li>Áreas completas: local, UF, município (IBGE), método/petrecho e ambiente</li>
+        <li>Um mês copiado para vários meses de uma vez</li>
+        <li>Resumo anual calculado sozinho: dias, unidades, quilos e R$</li>
+      </ul>
+      <p class="tx" style="margin-top:2vh">Lançou uma vez, reutiliza o ano todo. O dado vira <b>patrimônio da instituição</b>.</p>
+    </div>
+    <div class="midia">
+      <img src="https://drive.google.com/thumbnail?id=1sabuHM_AbyyfdzeLSDnLeNEyCjBSMxFP&sz=w2000" alt="Painel REAP">
+    </div>
+  </div>
+  <div class="foot"><span>SIOD</span><span>REAP no SIOD</span></div>
+</section>
+
+<!-- 15 -->
+<section class="slide" data-dur="55">
+  <div class="kicker">O carro-chefe • ao vivo</div>
+  <h2>Veja o REAP sendo preenchido <span>sozinho</span></h2>
+  <div class="vwrap">
+    <iframe src="https://drive.google.com/file/d/1E_gjDKojVGhApmt1kVlm4IstmHhYvZk6/preview" allow="autoplay" allowfullscreen></iframe>
+    <div class="vcap">Reprodução automática. Clique no vídeo para controles.</div>
+  </div>
+  <div class="foot"><span>SIOD</span><span>REAP ao vivo</span></div>
+</section>
+
+<!-- 16 -->
+<section class="slide" data-dur="20">
+  <div class="num">13</div>
+  <div class="kicker">O carro-chefe • a extensão</div>
+  <h2>SIOD Filler: o sistema <span>digita no portal oficial</span></h2>
+  <div class="fluxo">
+    <div>🎣<br><b>Dados no SIOD</b><small>lançados uma única vez</small></div>
+    <div class="seta">→</div>
+    <div>🤖<br><b>Extensão no navegador</b><small>preenche o PesqBrasil campo a campo</small></div>
+    <div class="seta">→</div>
+    <div>✅<br><b>Pessoa confere e envia</b><small>login e envio sempre humanos</small></div>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>12</b><small>meses preenchidos em minutos</small></div>
+    <div class="stat"><b>0</b><small>erros de digitação</small></div>
+    <div class="stat"><b>100%</b><small>conferência humana preservada</small></div>
+  </div>
+  <div class="foot"><span>SIOD</span><span>SIOD Filler</span></div>
+</section>
+
+<!-- 17 -->
+<section class="slide" data-dur="18">
+  <div class="num">14</div>
+  <div class="kicker">Impacto mensurável</div>
+  <h2>A conta que justifica <span>cada linha de código</span></h2>
+  <div class="stats">
+    <div class="stat"><b>40h → 2min</b><small>tempo mensal de REAP por instituição (cenário real)</small></div>
+    <div class="stat"><b>480h</b><small>horas devolvidas à operação, por ano</small></div>
+    <div class="stat"><b>−100%</b><small>retrabalho por erro de digitação em informes</small></div>
+  </div>
+  <p class="tx" style="margin-top:4vh">Tempo devolvido é atendimento devolvido: mais associados assistidos com a mesma equipe.</p>
+  <div class="foot"><span>SIOD</span><span>Impacto</span></div>
+</section>
+
+<!-- 18 -->
+<section class="slide" data-dur="16">
+  <div class="num">15</div>
+  <div class="kicker">Sustentabilidade do projeto</div>
+  <h2>Um produto, <span>dois mercados</span></h2>
+  <p class="tx">A edição <b>PESCA</b> atende colônias e sindicatos de pescadores. A edição <b>OFFICE</b> leva a mesma base de organização para escritórios contábeis e de serviços — sem os módulos específicos da pesca.</p>
+  <p class="tx">Isso significa que o projeto não depende de um único setor: ele se sustenta comercialmente enquanto cumpre seu papel social na pesca artesanal.</p>
+  <div class="foot"><span>SIOD</span><span>Sustentabilidade</span></div>
+</section>
+
+<!-- 19 -->
+<section class="slide" data-dur="22">
+  <div class="num">16</div>
+  <div class="kicker">Por que juntar-se</div>
+  <h2>Juntar-se ao SIOD é juntar-se a <span>acesso a direitos</span></h2>
+  <ul>
+    <li><b>Impacto direto em comunidades tradicionais:</b> documentação em dia é benefício garantido</li>
+    <li><b>Inclusão digital real:</b> tecnologia que simplifica, não que exclui</li>
+    <li><b>Fortalecimento institucional:</b> colônias e sindicatos com gestão profissional</li>
+    <li><b>Marca associada a resultado mensurável:</b> horas economizadas, erros eliminados, prazos cumpridos</li>
+  </ul>
+  <div class="foot"><span>SIOD</span><span>Por que juntar-se</span></div>
+</section>
+
+<!-- 20 -->
+<section class="slide" data-dur="20">
+  <div class="num">17</div>
+  <div class="kicker">O que o apoio viabiliza</div>
+  <h2>Do projeto local ao <span>alcance nacional</span></h2>
+  <ul>
+    <li>Treinamentos presenciais e remotos para colônias de pequeno porte</li>
+    <li>Condições especiais de implantação para instituições com menos recursos</li>
+    <li>Novas automações de informes oficiais além do REAP</li>
+    <li>Documentação pública de impacto social, com métricas auditáveis</li>
+  </ul>
+  <div class="foot"><span>SIOD</span><span>Contrapartidas</span></div>
+</section>
+
+<!-- 21 -->
+<section class="slide fim" data-dur="16">
+  <div class="kicker">Vamos juntos?</div>
+  <h1>SIOD</h1>
+  <p class="tx" style="text-align:center">Esta apresentação rodou sozinha, do início ao fim.<br>Assim como o REAP se preenche sozinho no portal.<br><b style="color:#17a2b8">Esse é o SIOD: trabalho que se faz sem pesar.</b></p>
+  <p class="tx" style="font-size:1.15vw; text-align:center">Gabriel Braga • (98) 98488-2170 • bragag730@gmail.com</p>
+</section>
+
+<div id="hud"></div>
+<div id="ctrl">
+  <button id="bPrev" title="Slide anterior">‹</button>
+  <button id="bPlay" title="Pausar / retomar (espaço)">⏸</button>
+  <button id="bNext" title="Próximo slide">›</button>
+  <small>modo automático • espaço pausa</small>
+</div>
+
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+const fill = document.getElementById('fill');
+const hud = document.getElementById('hud');
+const bPlay = document.getElementById('bPlay');
+let i = 0, timer = null, paused = false;
+
+function durMs(s) { return (parseFloat(s.dataset.dur) || 15) * 1000; }
+
+function pararVideos() { 
+  document.querySelectorAll('video').forEach(v => { v.pause(); v.onended = null; });
+}
+
+function mostrar(n) {
+  i = (n + slides.length) % slides.length;
+  slides.forEach((s, k) => s.classList.toggle('ativa', k === i));
+  hud.textContent = (i + 1) + ' / ' + slides.length + (paused ? '  (pausado)' : '');
+  pararVideos();
+  const v = slides[i].querySelector('video');
+  if (v) {
+    v.muted = true;
+    v.currentTime = 0;
+    v.onended = () => { if (!paused) mostrar(i + 1); };
+    v.play().catch(() => {});
+  }
+  const d = durMs(slides[i]);
+  fill.style.transition = 'none';
+  fill.style.width = '0%';
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    fill.style.transition = 'width ' + d + 'ms linear';
+    fill.style.width = '100%';
+  }));
+  clearTimeout(timer);
+  if (!paused) timer = setTimeout(() => mostrar(i + 1), d);
+}
+
+function togglePause() {
+  paused = !paused;
+  bPlay.textContent = paused ? '▶' : '⏸';
+  if (paused) {
+    clearTimeout(timer);
+    const w = getComputedStyle(fill).width;
+    fill.style.transition = 'none';
+    fill.style.width = w;
+    document.querySelectorAll('video').forEach(v => v.pause());
+  } else {
+    const v = slides[i].querySelector('video');
+    if (v) v.play().catch(() => {});
+    const d = durMs(slides[i]);
+    fill.style.transition = 'width ' + d + 'ms linear';
+    fill.style.width = '100%';
+    timer = setTimeout(() => mostrar(i + 1), d);
+  }
+  hud.textContent = (i + 1) + ' / ' + slides.length + (paused ? '  (pausado)' : '');
+}
+
+document.getElementById('bPrev').onclick = e => { e.stopPropagation(); mostrar(i - 1); };
+document.getElementById('bNext').onclick = e => { e.stopPropagation(); mostrar(i + 1); };
+bPlay.onclick = e => { e.stopPropagation(); togglePause(); };
+
+document.addEventListener('keydown', e => {
+  if (e.key === ' ') { e.preventDefault(); togglePause(); }
+  else if (e.key === 'ArrowRight') mostrar(i + 1);
+  else if (e.key === 'ArrowLeft') mostrar(i - 1);
+  else if (e.key === 'f' || e.key === 'F') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+});
+
+mostrar(0);
+</script>
+</body>
+</html>
