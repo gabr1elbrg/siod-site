@@ -2,11 +2,12 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SIOD — Apresentação para Parceiros</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Segoe UI',Arial,sans-serif; background:#0d1b26; color:#e6ebf2; overflow:hidden; }
-  .slide { display:none; width:100vw; height:100vh; padding:7vh 8vw; flex-direction:column; justify-content:center; position:relative; }
+  .slide { display:none; width:100vw; height:100vh; padding:7vh 8vw; flex-direction:column; justify-content:center; position:relative; overflow-y:auto; }
   .slide.ativa { display:flex; animation:fade .7s ease; }
   @keyframes fade { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
   .kicker { color:#17a2b8; font-weight:800; letter-spacing:.25em; font-size:.95rem; text-transform:uppercase; margin-bottom:1.4vh; }
@@ -38,24 +39,103 @@
   .cover, .fim { background:radial-gradient(circle at 20% 20%, #14374a 0%, #0d1b26 60%); align-items:center; text-align:center; }
   .cover p.tx, .fim p.tx { max-width:60vw; }
   .badge { display:inline-block; background:#17a2b8; color:#06222b; font-weight:800; border-radius:6px; padding:.6vh 1vw; font-size:1.05vw; margin:.4vw; }
-  .num { position:absolute; top:6vh; right:8vw; font-size:5vw; font-weight:800; color:rgba(23,162,184,.14); line-height:1; }
-  .foot { position:absolute; bottom:3vh; left:8vw; right:8vw; display:flex; justify-content:space-between; color:#5f7183; font-size:.9vw; }
+  .num { position:absolute; top:6vh; right:8vw; font-size:5vw; font-weight:800; color:rgba(23,162,184,.14); line-height:1; pointer-events:none; }
+  .foot { position:absolute; bottom:3vh; left:8vw; right:8vw; display:flex; justify-content:space-between; color:#5f7183; font-size:.9vw; pointer-events:none; }
   #fill { position:fixed; top:0; left:0; height:4px; background:#17a2b8; width:0%; z-index:50; }
   #hud { position:fixed; bottom:2vh; right:2vw; color:#5f7183; font-size:.95vw; z-index:50; }
   #ctrl { position:fixed; bottom:1.6vh; left:2vw; z-index:50; display:flex; gap:.6vw; align-items:center; }
-  #ctrl button { background:rgba(255,255,255,.08); border:1px solid rgba(23,162,184,.4); color:#cfe3ee; border-radius:8px; width:2.4vw; height:2.4vw; font-size:1vw; cursor:pointer; }
+  #ctrl button { background:rgba(255,255,255,.08); border:1px solid rgba(23,162,184,.4); color:#cfe3ee; border-radius:8px; width:2.4vw; height:2.4vw; font-size:1vw; cursor:pointer; min-width:36px; min-height:36px; }
   #ctrl button:hover { background:rgba(23,162,184,.25); }
   #ctrl small { color:#5f7183; font-size:.85vw; }
+  #pausado-badge { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(13,27,38,.92); border:2px solid #17a2b8; padding:2vh 3vw; border-radius:14px; color:#fff; font-size:1.4vw; font-weight:700; z-index:200; backdrop-filter: blur(8px); }
+  body.auto-pausado #pausado-badge { display:block; }
+
+  /* ===== TABLET E MOBILE ===== */
+  @media (max-width: 1024px), (max-height: 600px) {
+    h1 { font-size: 6vw; }
+    h2 { font-size: 4.2vw; }
+    p.tx { font-size: 2vw; }
+    ul { font-size: 1.9vw; }
+    .card b { font-size: 1.8vw; }
+    .card small { font-size: 1.5vw; }
+    .card .ico { font-size: 3vw; }
+    .stat b { font-size: 4.5vw; }
+    .stat small { font-size: 1.5vw; }
+    .fluxo { font-size: 1.7vw; }
+    .fluxo .seta { font-size: 3vw; }
+    .vcap { font-size: 1.6vw; }
+    .foot { font-size: 1.3vw; }
+    .num { font-size: 8vw; }
+    .badge { font-size: 1.6vw; padding: .7vh 1.5vw; }
+    .vwrap iframe, .vwrap video { width: 80vw; height: 45vw; }
+    #ctrl button { width: 42px; height: 42px; font-size: 1.3vw; }
+    #pausado-badge { font-size: 2.5vw; }
+  }
+
+  @media (max-width: 768px) {
+    body { overflow-y:auto; }
+    .slide { padding: 4vh 5vw; min-height: 100vh; height: auto; overflow-y: visible; }
+    .kicker { font-size: .75rem; margin-bottom: 1vh; letter-spacing: .15em; }
+    h1 { font-size: 11vw; margin-bottom: 2vh; }
+    h2 { font-size: 6.5vw; margin-bottom: 2vh; }
+    p.tx { font-size: 4.2vw; margin-bottom: 1.5vh; max-width: 95vw; }
+    ul { font-size: 4vw; line-height: 1.7; }
+    ul li { margin-bottom: .6vh; }
+    .grid { grid-template-columns: 1fr 1fr; gap: 2.5vw; }
+    .card { padding: 2.5vh 3vw; }
+    .card .ico { font-size: 6vw; }
+    .card b { font-size: 4vw; }
+    .card small { font-size: 3.2vw; }
+    .stats { flex-direction: column; gap: 2vh; margin-top: 2vh; }
+    .stat b { font-size: 9vw; }
+    .stat small { font-size: 3.5vw; }
+    .fluxo { flex-direction: column; font-size: 4vw; gap: 2vw; margin-top: 2vh; }
+    .fluxo div { padding: 2.5vh 3vw; width: 100%; }
+    .fluxo .seta { font-size: 7vw; transform: rotate(90deg); margin: 1vh 0; }
+    .duas { flex-direction: column; gap: 2vh; }
+    .duas > div:first-child { flex: none; }
+    .midia { min-height: 30vh; width: 100%; }
+    .midia img { max-height: 45vh; }
+    .vwrap iframe, .vwrap video { width: 92vw; height: 52vw; max-height: 55vh; }
+    .vcap { font-size: 3.5vw; text-align: center; }
+    .num { font-size: 18vw; top: 3vh; right: 4vw; }
+    .foot { font-size: 2.8vw; bottom: 1.5vh; left: 5vw; right: 5vw; }
+    .badge { font-size: 3.2vw; padding: 1vh 2.5vw; margin: 1vw .5vw; }
+    .cover, .fim { padding: 6vh 5vw; }
+    .cover p.tx, .fim p.tx { max-width: 95vw; font-size: 4.2vw; }
+    .cover h1, .fim h1 { font-size: 14vw; }
+    #fill { height: 3px; }
+    #hud { font-size: 2.8vw; bottom: 8vh; right: 4vw; }
+    #ctrl { bottom: 2vh; left: 3vw; gap: 2vw; }
+    #ctrl button { width: 44px; height: 44px; font-size: 5vw; }
+    #ctrl small { display: none; }
+    #pausado-badge { font-size: 5vw; padding: 3vh 5vw; }
+  }
+
+  @media (max-width: 480px) {
+    .grid { grid-template-columns: 1fr; }
+    h1 { font-size: 13vw; }
+    h2 { font-size: 7.5vw; }
+    p.tx { font-size: 4.5vw; }
+    ul { font-size: 4.3vw; }
+    .card .ico { font-size: 8vw; }
+    .card b { font-size: 4.8vw; }
+    .card small { font-size: 3.8vw; }
+    .stat b { font-size: 11vw; }
+    .badge { font-size: 3.6vw; }
+  }
+
   @media print {
     body { overflow:visible; }
     .slide { display:flex !important; height:100vh; page-break-after:always; }
-    #hud,#fill,#ctrl { display:none !important; }
+    #hud,#fill,#ctrl,#pausado-badge { display:none !important; }
     iframe, video { display:none; }
   }
 </style>
 </head>
 <body>
 <div id="fill"></div>
+<div id="pausado-badge">⏸ Pausado — volte à aba para continuar</div>
 
 <!-- 1 -->
 <section class="slide cover" data-dur="12">
@@ -63,7 +143,7 @@
   <h1>SIOD</h1>
   <p class="tx" style="text-align:center">Sistema Integrado Organizacional — tecnologia nascida dentro da operação do <b>Seguro-Defeso</b> para organizar, proteger e automatizar o trabalho de colônias, sindicatos e escritórios.</p>
   <div style="margin-top:2vh"><span class="badge">EDIÇÃO PESCA</span><span class="badge">EDIÇÃO OFFICE</span></div>
-  <p class="tx" style="font-size:1vw; text-align:center; margin-top:3vh">Esta apresentação se executa sozinha, slide a slide. Aperte F para tela cheia.</p>
+  <p class="tx" style="text-align:center; margin-top:3vh">Esta apresentação se executa sozinha, slide a slide.<br>Em celular: toque nos lados da tela para avançar/voltar.</p>
 </section>
 
 <!-- 2 -->
@@ -114,7 +194,7 @@
   <h2>O SIOD em <span>movimento</span></h2>
   <div class="vwrap">
     <iframe src="https://drive.google.com/file/d/1wsAva97_fPUGdctP4YstdlyLGRWlQcRs/preview" allow="autoplay" allowfullscreen></iframe>
-    <div class="vcap">Reprodução automática. Clique no vídeo para controles.</div>
+    <div class="vcap">Reprodução automática. Toque no vídeo para controles.</div>
   </div>
   <div class="foot"><span>SIOD</span><span>Vídeo institucional</span></div>
 </section>
@@ -270,7 +350,7 @@
   <h2>Veja o REAP sendo preenchido <span>sozinho</span></h2>
   <div class="vwrap">
     <iframe src="https://drive.google.com/file/d/1E_gjDKojVGhApmt1kVlm4IstmHhYvZk6/preview" allow="autoplay" allowfullscreen></iframe>
-    <div class="vcap">Reprodução automática. Clique no vídeo para controles.</div>
+    <div class="vcap">Reprodução automática. Toque no vídeo para controles.</div>
   </div>
   <div class="foot"><span>SIOD</span><span>REAP ao vivo</span></div>
 </section>
@@ -352,7 +432,7 @@
   <div class="kicker">Vamos juntos?</div>
   <h1>SIOD</h1>
   <p class="tx" style="text-align:center">Esta apresentação rodou sozinha, do início ao fim.<br>Assim como o REAP se preenche sozinho no portal.<br><b style="color:#17a2b8">Esse é o SIOD: trabalho que se faz sem pesar.</b></p>
-  <p class="tx" style="font-size:1.15vw; text-align:center">Gabriel Braga • (98) 98488-2170 • bragag730@gmail.com</p>
+  <p class="tx" style="text-align:center">Gabriel Braga • (98) 98488-2170 • bragag730@gmail.com</p>
 </section>
 
 <div id="hud"></div>
@@ -360,7 +440,6 @@
   <button id="bPrev" title="Slide anterior">‹</button>
   <button id="bPlay" title="Pausar / retomar (espaço)">⏸</button>
   <button id="bNext" title="Próximo slide">›</button>
-  <small>modo automático • espaço pausa</small>
 </div>
 
 <script>
@@ -368,24 +447,25 @@ const slides = Array.from(document.querySelectorAll('.slide'));
 const fill = document.getElementById('fill');
 const hud = document.getElementById('hud');
 const bPlay = document.getElementById('bPlay');
-let i = 0, timer = null, paused = false;
+let i = 0, timer = null, paused = false, autoPausado = false;
 
 function durMs(s) { return (parseFloat(s.dataset.dur) || 15) * 1000; }
 
-function pararVideos() { 
+function pararVideos() {
   document.querySelectorAll('video').forEach(v => { v.pause(); v.onended = null; });
+  // iframes de Drive/OneDrive continuam tocando; pausa só se o usuário sair do slide
 }
 
 function mostrar(n) {
   i = (n + slides.length) % slides.length;
   slides.forEach((s, k) => s.classList.toggle('ativa', k === i));
-  hud.textContent = (i + 1) + ' / ' + slides.length + (paused ? '  (pausado)' : '');
+  hud.textContent = (i + 1) + ' / ' + slides.length + (paused ? '  (pausado)' : '') + (autoPausado ? '  (auto)' : '');
   pararVideos();
   const v = slides[i].querySelector('video');
   if (v) {
     v.muted = true;
     v.currentTime = 0;
-    v.onended = () => { if (!paused) mostrar(i + 1); };
+    v.onended = () => { if (!paused && !autoPausado) mostrar(i + 1); };
     v.play().catch(() => {});
   }
   const d = durMs(slides[i]);
@@ -396,7 +476,7 @@ function mostrar(n) {
     fill.style.width = '100%';
   }));
   clearTimeout(timer);
-  if (!paused) timer = setTimeout(() => mostrar(i + 1), d);
+  if (!paused && !autoPausado) timer = setTimeout(() => mostrar(i + 1), d);
 }
 
 function togglePause() {
@@ -409,6 +489,8 @@ function togglePause() {
     fill.style.width = w;
     document.querySelectorAll('video').forEach(v => v.pause());
   } else {
+    autoPausado = false;
+    document.body.classList.remove('auto-pausado');
     const v = slides[i].querySelector('video');
     if (v) v.play().catch(() => {});
     const d = durMs(slides[i]);
@@ -419,15 +501,79 @@ function togglePause() {
   hud.textContent = (i + 1) + ' / ' + slides.length + (paused ? '  (pausado)' : '');
 }
 
+// ===== AUTO-PAUSE quando a aba perde o foco =====
+function autoPausar() {
+  if (paused) return; // já está pausado manualmente
+  autoPausado = true;
+  document.body.classList.add('auto-pausado');
+  clearTimeout(timer);
+  const w = getComputedStyle(fill).width;
+  fill.style.transition = 'none';
+  fill.style.width = w;
+  document.querySelectorAll('video').forEach(v => v.pause());
+  hud.textContent = (i + 1) + ' / ' + slides.length + '  (auto-pausado)';
+}
+
+function autoRetomar() {
+  if (!autoPausado || paused) return;
+  autoPausado = false;
+  document.body.classList.remove('auto-pausado');
+  const v = slides[i].querySelector('video');
+  if (v) v.play().catch(() => {});
+  const d = durMs(slides[i]);
+  fill.style.transition = 'width ' + d + 'ms linear';
+  fill.style.width = '100%';
+  timer = setTimeout(() => mostrar(i + 1), d);
+  hud.textContent = (i + 1) + ' / ' + slides.length;
+}
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) autoPausar();
+  else autoRetomar();
+});
+
+window.addEventListener('blur', autoPausar);
+window.addEventListener('focus', autoRetomar);
+
 document.getElementById('bPrev').onclick = e => { e.stopPropagation(); mostrar(i - 1); };
 document.getElementById('bNext').onclick = e => { e.stopPropagation(); mostrar(i + 1); };
 bPlay.onclick = e => { e.stopPropagation(); togglePause(); };
+
+// ===== Navegação por toque (celular) =====
+let toqueInicio = 0;
+document.addEventListener('touchstart', e => {
+  if (e.target.closest('video, iframe, a, button, .midia, .vwrap, #ctrl')) return;
+  toqueInicio = e.touches[0].clientX;
+});
+document.addEventListener('touchend', e => {
+  if (e.target.closest('video, iframe, a, button, .midia, .vwrap, #ctrl')) return;
+  const dx = e.changedTouches[0].clientX - toqueInicio;
+  if (Math.abs(dx) > 50) {
+    if (dx < 0) mostrar(i + 1); // swipe esquerda → próximo
+    else mostrar(i - 1);        // swipe direita → anterior
+  } else if (Math.abs(dx) < 10) {
+    // toque simples: metade esquerda = voltar, direita = avançar
+    const w = window.innerWidth;
+    if (e.changedTouches[0].clientX < w / 2) mostrar(i - 1);
+    else mostrar(i + 1);
+  }
+});
 
 document.addEventListener('keydown', e => {
   if (e.key === ' ') { e.preventDefault(); togglePause(); }
   else if (e.key === 'ArrowRight') mostrar(i + 1);
   else if (e.key === 'ArrowLeft') mostrar(i - 1);
   else if (e.key === 'f' || e.key === 'F') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+});
+
+// clique no desktop (sem conflitar com mobile)
+document.addEventListener('click', e => {
+  if (e.target.closest('video, iframe, a, button, .midia, .vwrap, #ctrl')) return;
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const w = window.innerWidth;
+    if (e.clientX < w / 3) mostrar(i - 1);
+    else if (e.clientX > w * 2 / 3) mostrar(i + 1);
+  }
 });
 
 mostrar(0);
